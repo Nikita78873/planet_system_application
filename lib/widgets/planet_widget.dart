@@ -72,10 +72,9 @@ class _PlanetWidgetState extends State<PlanetWidget>
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: const EdgeInsets.only(left: 30, top: 30),
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        alignment: Alignment.bottomCenter,
+        alignment: Alignment.center,
         child: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
             int childHeight = 2 * int.parse(radius);
@@ -126,6 +125,7 @@ class _PlanetWidgetState extends State<PlanetWidget>
             return SlideTransition(
                 position: offsetAnimation,
                 child: Container(
+                  alignment: Alignment.center,
                   width: childWidth.toDouble(),
                   height: childHeight.toDouble(),
                   decoration:

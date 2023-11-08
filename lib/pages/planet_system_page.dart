@@ -71,67 +71,62 @@ class _AnimatedPlanetsState extends State<AnimatedPlanets> {
   @override
   Widget build(BuildContext context) {
     print(radius);
-    return LayoutBuilder(
-      builder: (BuildContext context, BoxConstraints constraints) {
-        return Stack(
-          children: [
-            Center(
-              child: ConstrainedBox(
-                constraints:
-                    const BoxConstraints(maxHeight: 150.0, maxWidth: 50.0),
-                child: Stack(
-                  children: [
-                    ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: radius.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        print("index: $index");
-                        return SizedBox(
-                          width: 40,
-                          height: 40,
-                          child: PlanetWidget(
-                            radius: radius[index],
-                            remoteness: remoteness[index],
-                            speed: speed[index],
-                            color: color[index],
-                          ),
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Center(
-              child: Container(
-                width: 30,
-                height: 30,
-                decoration: const BoxDecoration(
-                    shape: BoxShape.circle, color: Colors.yellow),
-              ),
-            ),
-            Container(
-              alignment: Alignment.bottomCenter,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => PlanetsOptions(
-                        radius: radius,
-                        remoteness: remoteness,
-                        speed: speed,
-                        color: color,
+    return Stack(
+      children: [
+        Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxHeight: 150.0, maxWidth: 50.0),
+            child: Stack(
+              children: [
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: radius.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    print("index: $index");
+                    return SizedBox(
+                      width: 40,
+                      height: 40,
+                      child: PlanetWidget(
+                        radius: radius[index],
+                        remoteness: remoteness[index],
+                        speed: speed[index],
+                        color: color[index],
                       ),
-                    ),
-                  );
-                },
-                child: const Text("Добавить планеты в солнечную систему"),
-              ),
+                    );
+                  },
+                ),
+              ],
             ),
-          ],
-        );
-      },
+          ),
+        ),
+        Center(
+          child: Container(
+            width: 30,
+            height: 30,
+            decoration: const BoxDecoration(
+                shape: BoxShape.circle, color: Colors.yellow),
+          ),
+        ),
+        Container(
+          alignment: Alignment.bottomCenter,
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PlanetsOptions(
+                    radius: radius,
+                    remoteness: remoteness,
+                    speed: speed,
+                    color: color,
+                  ),
+                ),
+              );
+            },
+            child: const Text("Add planets in solar system"),
+          ),
+        ),
+      ],
     );
   }
 }
