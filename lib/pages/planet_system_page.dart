@@ -75,30 +75,31 @@ class _AnimatedPlanetsState extends State<AnimatedPlanets> {
       builder: (BuildContext context, BoxConstraints constraints) {
         return Stack(
           children: [
-            Container(
-              width:200,
-              height:200,
-              alignment: FractionalOffset.bottomCenter,
-              margin: EdgeInsets.only(top:270, left: 90),
-              child: ListView.builder(
-                itemCount: radius.length,
-                itemBuilder: (BuildContext context, int index) {
-                  print("index: $index");
-                  return Container(
-                    width: 40,
-                    height: 40,
-                    child: Stack(
-                      children: [
-                        PlanetWidget(
-                          radius: radius[index],
-                          remoteness: remoteness[index],
-                          speed: speed[index],
-                          color: color[index],
-                        ),
-                      ],
+            Center(
+              child: ConstrainedBox(
+                constraints:
+                    const BoxConstraints(maxHeight: 150.0, maxWidth: 50.0),
+                child: Stack(
+                  children: [
+                    ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: radius.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        print("index: $index");
+                        return SizedBox(
+                          width: 40,
+                          height: 40,
+                          child: PlanetWidget(
+                            radius: radius[index],
+                            remoteness: remoteness[index],
+                            speed: speed[index],
+                            color: color[index],
+                          ),
+                        );
+                      },
                     ),
-                  );
-                },
+                  ],
+                ),
               ),
             ),
             Center(
@@ -108,9 +109,6 @@ class _AnimatedPlanetsState extends State<AnimatedPlanets> {
                 decoration: const BoxDecoration(
                     shape: BoxShape.circle, color: Colors.yellow),
               ),
-            ),
-            const SizedBox(
-              height: 200,
             ),
             Container(
               alignment: Alignment.bottomCenter,
