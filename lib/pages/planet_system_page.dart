@@ -81,6 +81,7 @@ class _AnimatedPlanetsState extends State<AnimatedPlanets> {
                 ListView.builder(
                   shrinkWrap: true,
                   itemCount: radius.length,
+                  
                   itemBuilder: (BuildContext context, int index) {
                     print("index: $index");
                     return SizedBox(
